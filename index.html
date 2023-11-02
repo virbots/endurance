@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Endurance Profiles</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
+
+  <script src="main.2f71b1b0fc09bea9294f.js"></script></head>
+  <style>
+    #root {
+        font-family: Open Sans;
+        display: flex;
+        flex-direction: column;
+    }
+    #summary {
+        margin-bottom: 10px;
+        font-family: Open Sans;
+    }
+    #example {
+        margin-top: 20px;
+        font-family: Open Sans;
+        display: none;
+    }
+    blockquote {
+        width: 50%;
+    }
+/*
+    #placeholder {
+        height: 500px;
+        margin: 40px auto 0 auto;
+    }
+*/
+
+.legend {
+		display: block;
+		-webkit-padding-start: 2px;
+		-webkit-padding-end: 2px;
+		border-width: initial;
+		border-style: none;
+		border-color: initial;
+		border-image: initial;
+		padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: 10px auto;
+}
+
+.legendLayer .background {
+    fill: rgba(255, 255, 255, 0.85);
+    stroke: rgba(0, 0, 0, 0.85);
+    stroke-width: 1;
+}
+
+  </style>
+  <body>
+    <div style="width: 800px;"><canvas id="acquisitions"></canvas></div>
+    <div id="legendContainer" class="legend"></div>
+    <div id="root">
+        <div>Select Swimmer:
+            <select name="swimmer"></select>
+        </div>
+        <div>Select Stroke:
+            <select name="stroke"></select>
+        </div>
+        
+        <blockquote style="display: none;">
+            <p>
+                <p>&ldquo;People think focus means saying yes to the thing you&rsquo;ve got to focus on. But that&rsquo;s not what it means at all.</p><p>It means saying no to the hundred other good ideas that there are.</p><p>You have to pick carefully.</p><p>I&rsquo;m actually as proud of the things we haven&rsquo;t done as the things I have done.&rdquo;</p>~ Steve Jobs
+            </p>
+        </blockquote>
+        <ul id="summary"></ul>
+        <div id="example"></div>
+    </div>
+    <script>
+        $(function () {
+            readSwimmers(processSwimmers);
+        });
+    </script>
+  </body>
+</html>
+
