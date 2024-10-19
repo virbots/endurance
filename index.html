@@ -5,7 +5,7 @@
     <title>Endurance Profiles</title>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
 
-  <script src="main.3793a884ab1ef0cfba5a.js"></script></head>
+  <script src="main.a4d07c2ace5d63c35ca5.js"></script></head>
   <style>
     #root {
         font-family: Open Sans;
@@ -52,29 +52,43 @@
     stroke-width: 1;
 }
 
+button#get-standards {
+    width: fit-content;
+}
+
+table#standards {
+    width: fit-content;
+}
+
+table#standards td, table#standards th {
+    padding: 15px 15px 15px 0;
+    text-align: right;
+}
+
   </style>
   <body>
     <div style="width: 800px;"><canvas id="acquisitions"></canvas></div>
     <div id="legendContainer" class="legend"></div>
-    <div id="root">
-        <div>Select Swimmer:
-            <select name="swimmer"></select>
+    <div id="root" style="margin-left: 20px;display: flex; flex-direction: column; gap: 10px;">
+        <div>
+            <label for="swimmer-div">Select Swimmer:</label>
+            <select id="swimmer-div" name="swimmer"></select>
         </div>
+        <div>Gender: <span class="gender"></span></div>
+        <div>Age: <span class="age"></span></div>
         <div>Select Stroke:
             <select name="stroke"></select>
         </div>
+        <button id="get-standards">Get Standards</button>
+        <table id="standards"></table>
         
-        <blockquote style="display: none;">
-            <p>
-                <p>&ldquo;People think focus means saying yes to the thing you&rsquo;ve got to focus on. But that&rsquo;s not what it means at all.</p><p>It means saying no to the hundred other good ideas that there are.</p><p>You have to pick carefully.</p><p>I&rsquo;m actually as proud of the things we haven&rsquo;t done as the things I have done.&rdquo;</p>~ Steve Jobs
-            </p>
-        </blockquote>
         <ul id="summary"></ul>
         <div id="example"></div>
     </div>
     <script>
         $(function () {
-            readSwimmers(processSwimmers);
+//            readEnduranceEntries(processSwimmers);
+//            readSwimmers(processSwimmers);
         });
     </script>
   </body>
