@@ -35,3 +35,14 @@ This codebase is for a web application that generates and visualizes swimming en
    - `chartjs-plugin-annotation` and `chartjs-plugin-zoom`: To enhance the chart with annotation and zoom capabilities.
    - `jquery`: For DOM manipulation and event handling.
    - `ts-loader`: To transpile TypeScript code to JavaScript.
+
+### 7. **Setup**:
+   - Download webpack and http-server. Plus the packages in step 6 above.
+   - To build: ./build.sh
+   - To test:
+       - ./run.sh
+       - Open the link given by run.sh in a browser
+   - To deploy to Google Sites:
+       - Upload dist/main.<slug>.js to github.
+       - On the website, replace the old main.<old_slug>.js with the new one on the Endurance Profiles page.
+       - Test and publish.
