@@ -348,7 +348,7 @@ window.count = 0;
 
 window.getApiUrl = function(tabName) {
     tabName = tabName.replace(/\//, '-');
-    return `https://sheets.googleapis.com/v4/spreadsheets/1QIcvf5S0IrTJ2GD8DcTtIW-UxAGh5oF6Hm7Rvuq8Wms/values/${tabName}!A1:G5000?key=AIzaSyD2GEqV6DLpVO-RyVufOloqfUWjzNMHSgA`;
+    return `https://sheets.googleapis.com/v4/spreadsheets/1QIcvf5S0IrTJ2GD8DcTtIW-UxAGh5oF6Hm7Rvuq8Wms/values/${tabName}?key=AIzaSyD2GEqV6DLpVO-RyVufOloqfUWjzNMHSgA`;
 }
 
 // age group tab name to Standards arr
