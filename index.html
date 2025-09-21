@@ -5,7 +5,7 @@
     <title>Endurance Profiles</title>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
 
-  <script src="main.a4d07c2ace5d63c35ca5.js"></script></head>
+  <script src="main.0dcbea685d93599cd488.js"></script></head>
   <style>
     #root {
         font-family: Open Sans;
@@ -56,11 +56,24 @@ button#get-standards {
     width: fit-content;
 }
 
-table#standards {
+table#standards, table#standards-wrap {
     width: fit-content;
 }
 
+#standards-tables {
+    display: none;
+}
+
 table#standards td, table#standards th {
+    padding: 15px 15px 15px 0;
+    text-align: right;
+}
+
+table#standards-wrap tr[dist-stroke] {
+    display: none;
+}
+
+table#standards-wrap td, table#standards-wrap th {
     padding: 15px 15px 15px 0;
     text-align: right;
 }
@@ -69,6 +82,7 @@ table#standards td, table#standards th {
   <body>
     <div style="width: 800px;"><canvas id="acquisitions"></canvas></div>
     <div id="legendContainer" class="legend"></div>
+    <div id="standards-tables"></div>
     <div id="root" style="margin-left: 20px;display: flex; flex-direction: column; gap: 10px;">
         <div>
             <label for="swimmer-div">Select Swimmer:</label>
@@ -81,6 +95,7 @@ table#standards td, table#standards th {
         </div>
         <button id="get-standards">Get Standards</button>
         <table id="standards"></table>
+	<table id="standards-wrap"></table>
         
         <ul id="summary"></ul>
         <div id="example"></div>
