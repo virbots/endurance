@@ -222,6 +222,7 @@ function commonReadCallback() {
   ); // close Chart constructor
   $('select[name="swimmer"], select[name="stroke"]').change(function() {
       $('table#standards').html('');
+      $('table#standards-wrap').html('');
       removeAllData();
       window.chart.resetZoom();
       updateChart(false);
@@ -260,6 +261,7 @@ function commonReadCallback() {
          let entries = window.all_entries.filter(e => e.name == swimmer && e.stroke == stroke);
          let thatOrFaster = entries.filter(e => window.fromMinSec(e.pace) <= sr.paceRequiredSec);
          sr.status = '';
+         sr.maxTime = '';
          if (thatOrFaster.length == 0) {
             sr.status = 0.0; 
             distanceNotMet.add(dist);
@@ -295,11 +297,39 @@ function commonReadCallback() {
             newStands.push(sr);
          }
      }
+     let table = $('#standards-wrap');
+     for (const dist in distToRows) {
+         var srs = distToRows[dist];
+	 var isEarned = false;
+	 // walk backwards
+	 for (var i = srs.length -1; i >= 0; i--) {
+	    let sr = srs[i];
+	    if (isEarned) {
+               sr.status = 100.0;
+            }
+	    if (!sr.shown && sr.status != 100.0) {
+               continue;
+            }
+	    if (sr.status == 100.0) {
+		isEarned = true;
+	    }
+	    let dist_stroke = `${sr.distance}-${sr.stroke}`
+	    let tr = table.find(`tr[dist-stroke="${dist_stroke}"]`)
+            tr.show();
+	    let td = tr.find(`td[standard="${sr.standard}"]`);
+	    td.html(sr.toNiceStatus(false));
+            if (sr.status < 100) {
+		tr.find('.progress').html(sr.toNiceStatus(true));	
+	    }
+         }
+     }
+//     $('#standards-wrap').html(table);
      newRows = [];
      for (var i = 0; i < newStands.length; i++) {
         let sr = newStands[i];
         let srow = sr.toRow();
-        newRows.push( $(srow).append(`<td>${window.toMinSec(sr.paceRequiredSec)}</td>`).append(`<td>${sr.toNiceStatus()}</td>`) );
+        let srr = $(srow).addClass(stroke);
+        newRows.push( srr.append(`<td>${window.toMinSec(sr.paceRequiredSec)}</td>`).append(`<td>${sr.toNiceStatus(true)}</td>`) );
      }
      $('table#standards').append(newRows);
   }
@@ -312,10 +342,20 @@ function commonReadCallback() {
      var stroke = $('select[name="stroke"]').val();
 
      var cat = `${ageGroup} ${gen}`;
+
+     let table = $(`table[age-group="${cat}"]`);
+     if (table.length) {
+	table = table.html();
+     } else {
+	table = '';
+     } 
+
      if (!window.standards.hasOwnProperty(cat) || window.standards[cat].length == 0) {
         alert(`No standards yet for: ${cat}`);
         return;
      } 
+
+     $('#standards-wrap').html(table);
 
      let mainStrokes = ['Free', 'Breast', 'Fly', 'Back'];
      if (mainStrokes.indexOf(stroke) > -1) {
@@ -327,6 +367,8 @@ function commonReadCallback() {
             get_standards(swimmer, mainStrokes[i], cat);
         }
      }
+
+
      
 //     if (stroke == 'All') {
 //        alert('Pick one of the 4 specific strokes');
