@@ -315,11 +315,12 @@ function commonReadCallback() {
 	    }
 	    let dist_stroke = `${sr.distance}-${sr.stroke}`
 	    let tr = table.find(`tr[dist-stroke="${dist_stroke}"]`)
-            tr.show();
+        tr.addClass(sr.stroke);
+        tr.show();
 	    let td = tr.find(`td[standard="${sr.standard}"]`);
 	    td.html(sr.toNiceStatus(false));
-            if (sr.status < 100) {
-		tr.find('.progress').html(sr.toNiceStatus(true));	
+        if (sr.status < 100) {
+            tr.find('.progress').html(sr.toNiceStatus(true));	
 	    }
          }
      }

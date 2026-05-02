@@ -24,16 +24,20 @@
     blockquote {
         width: 50%;
     }
-    #standards .Free {
+    #standards .Free,
+    #standards-wrap .Free {
         background: rgba(255, 0, 0, 0.1);
     }
-    #standards .Breast {
+    #standards .Breast,
+    #standards-wrap .Breast {
         background: rgba(0, 255, 0, 0.1);
     }
-    #standards .Back {
+    #standards .Back,
+    #standards-wrap .Back {
         background: rgba(0, 0, 255, 0.1);
     }
-    #standards .Fly {
+    #standards .Fly,
+    #standards-wrap .Fly {
         background: rgba(255, 255, 0, 0.1);
     }
 /*
@@ -73,7 +77,7 @@ table#standards, table#standards-wrap {
 }
 
 table#standards-wrap {
-    display: none;
+/*    display: none; */
 }
 
 #standards-tables {
@@ -110,8 +114,8 @@ table#standards-wrap td, table#standards-wrap th {
             <select name="stroke"></select>
         </div>
         <button id="get-standards">Get Standards</button>
-        <table id="standards"></table>
 	<table id="standards-wrap"></table>
+    <table id="standards"></table>
         
         <ul id="summary"></ul>
         <div id="example"></div>
